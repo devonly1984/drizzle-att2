@@ -1,18 +1,21 @@
 "use client"
 import { ReactNode } from 'react'
-import {DarkModeProvider,AuthProvider} from './'
-import DarkModeToggle from '@/components/DarkModeToogle';
+import {DarkModeProvider} from './'
+import { SessionProvider } from 'next-auth/react';
+
 
 const CombinedProvider = ({children}:{children:ReactNode}) => {
   return (
-    <AuthProvider>
-      <DarkModeProvider>
-        <div >
-          <DarkModeToggle />
-        </div>
+    <SessionProvider>
+      <DarkModeProvider
+        defaultTheme="system"
+        disableTransitionOnChange
+        attribute="class"
+        enableSystem
+      >
         {children}
       </DarkModeProvider>
-    </AuthProvider>
+    </SessionProvider>
   );
 }
 
