@@ -19,7 +19,7 @@ const CreateRoomForm = ()=>{
       defaultValues: {
         name: "",
         description: "",
-        language: "",
+        tags: "",
         githubRepo: "",
       },
     });
@@ -45,7 +45,7 @@ const CreateRoomForm = ()=>{
           />
           <CustomInput
             control={form.control}
-            name="language"
+            name="tags"
             label="Programming Language"
             placeholder="What Programming Language is the project using"
           />

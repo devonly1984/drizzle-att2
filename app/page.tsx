@@ -10,17 +10,19 @@ const Home = async() => {
 
 const rooms = await getRooms()
   return (
-    <div className="min-h-screen    p-16">
+    <main className="min-h-screen    p-16">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-4xl">Find Dev Rooms</h1>
         <Button asChild>
           <Link href="/create-room">Create Room</Link>
         </Button>
       </div>
-      {rooms.map((room: Room) => (
-        <RoomCard key={room.id} room={room} />
-      ))}
-    </div>
+      <div className="grid grid-cols-3 gap-4">
+        {rooms.map((room: Room) => (
+          <RoomCard key={room.id} room={room} />
+        ))}
+      </div>
+    </main>
   );
 };
 

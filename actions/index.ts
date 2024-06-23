@@ -13,8 +13,9 @@ export const createRoom = async (roomData: Omit<Room, "id" | "userId">) => {
     }
     const response =await db?.insert(room).values({ ...roomData, userId: session.user.id });
     console.log("Server Action", response);
-    return response;
     revalidatePath("/");
+    return response;
+    
   } catch (error) {
     console.log(error);
   }
