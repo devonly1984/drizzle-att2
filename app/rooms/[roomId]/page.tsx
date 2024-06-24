@@ -1,5 +1,5 @@
 import TagsList from "@/components/TagsList";
-import { DevFinderVideo } from "@/components/VideoPlayer";
+import DevFinderVideo from "@/components/VideoPlayer";
 
 import { getRoom } from "@/data-access/rooms";
 import { splitTags } from "@/lib/utils";

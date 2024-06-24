@@ -1,11 +1,13 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 import DarkModeToggle from "./DarkModeToogle";
 import AccountDropdown from "./AccountDropdown";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "./ui/button";
+import { LogInIcon } from "lucide-react";
 
 const Header = () => {
   const session = useSession();
@@ -21,7 +23,20 @@ const Header = () => {
         </Link>
 
         <div className="flex items-center gap-4">
-          <AccountDropdown />
+          {session.data && <AccountDropdown />}
+          {!session.data && (
+            <Button
+              onClick={() =>
+                signIn("google", {
+                  callbackUrl: "/",
+                })
+              }
+              variant="link"
+            >
+              <LogInIcon className="mr-2" />
+              Sign In
+            </Button>
+          )}
 
           <DarkModeToggle />
         </div>
